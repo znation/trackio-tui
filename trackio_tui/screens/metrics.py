@@ -38,7 +38,7 @@ class MetricsScreen(Screen):
         height: 100%;
     }
 
-    #loading {
+    LoadingIndicator {
         width: 100%;
         height: 100%;
         align: center middle;
@@ -107,9 +107,15 @@ class MetricsScreen(Screen):
 
         runs = await self._loader.get_runs(self._state.current_project)
 
+        # Select all runs by default (like web dashboard)
+        self._state.selected_runs = set(runs)
+
         sidebar = self.query_one("#sidebar", Sidebar)
         run_selector = sidebar.get_run_selector()
         run_selector.update_runs(runs, self._state.selected_runs)
+
+        # Trigger metrics update with all runs selected
+        self._update_metrics()
 
     @on(RunSelectionChanged)
     def on_run_selection_changed(self, event: RunSelectionChanged) -> None:
@@ -141,7 +147,7 @@ class MetricsScreen(Screen):
         main_content = self.query_one("#main-content", Vertical)
         main_content.remove_children()
 
-        loading = LoadingIndicator(id="loading")
+        loading = LoadingIndicator()
         main_content.mount(loading)
 
         # Collect all metrics from selected runs
