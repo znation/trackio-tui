@@ -2,6 +2,8 @@
 
 Terminal User Interface for Trackio ML experiment tracking. View your training metrics, system statistics, and experiment runs directly in your terminal.
 
+![Trackio TUI Screenshot](screenshot.png)
+
 ## Features
 
 - 📊 Interactive metric visualization with line plots
