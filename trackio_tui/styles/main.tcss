@@ -1,0 +1,93 @@
+/* Main stylesheet for Trackio TUI */
+
+/* Global styles */
+* {
+    scrollbar-gutter: stable;
+}
+
+Screen {
+    background: $surface;
+}
+
+/* Header styling */
+Header {
+    background: $primary;
+    color: $text;
+}
+
+/* Sidebar styling */
+Sidebar {
+    background: $surface;
+}
+
+/* Content area */
+#main-content {
+    background: $surface;
+}
+
+/* Loading indicator */
+LoadingIndicator {
+    background: $surface;
+    color: $accent;
+}
+
+/* Labels */
+Label {
+    color: $text;
+}
+
+/* Inputs */
+Input {
+    border: solid $primary;
+}
+
+Input:focus {
+    border: solid $accent;
+}
+
+/* Buttons */
+Button {
+    background: $primary;
+    color: $text;
+}
+
+Button:hover {
+    background: $accent;
+}
+
+Button.-primary {
+    background: $accent;
+    color: $text;
+    text-style: bold;
+}
+
+/* Checkboxes */
+Checkbox {
+    background: transparent;
+}
+
+/* Select widgets */
+Select {
+    border: solid $primary;
+}
+
+Select:focus {
+    border: solid $accent;
+}
+
+/* Specific component overrides */
+.run-item:hover {
+    background: $primary 20%;
+}
+
+/* Plot containers */
+MetricPlot {
+    margin: 1 0;
+}
+
+/* Group labels */
+#metrics-container > Label {
+    padding: 1 0;
+    text-style: bold underline;
+    color: $accent;
+}
