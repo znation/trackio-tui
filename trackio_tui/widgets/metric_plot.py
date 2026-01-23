@@ -121,10 +121,6 @@ class MetricPlot(Vertical):
         if self._config.log_scale_y:
             plt.yscale("log")
 
-        # Show legend if multiple runs
-        if len(self._data) > 1:
-            plt.legend()
-
         plt.title(self.metric_name)
 
         # Refresh the plot widget

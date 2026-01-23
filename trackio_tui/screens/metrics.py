@@ -33,7 +33,7 @@ class MetricsScreen(Screen):
         padding: 1;
     }
 
-    #metrics-container {
+    .metrics-container {
         width: 100%;
         height: 100%;
     }
@@ -174,7 +174,7 @@ class MetricsScreen(Screen):
 
         # Create scrollable container for plots
         async with main_content.batch():
-            metrics_scroll = VerticalScroll(id="metrics-container")
+            metrics_scroll = VerticalScroll(classes="metrics-container")
             main_content.mount(metrics_scroll)
 
             # Create plots for each metric

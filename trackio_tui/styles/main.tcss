@@ -86,7 +86,7 @@ MetricPlot {
 }
 
 /* Group labels */
-#metrics-container > Label {
+.metrics-container > Label {
     padding: 1 0;
     text-style: bold underline;
     color: $accent;
