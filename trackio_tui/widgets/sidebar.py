@@ -33,7 +33,7 @@ class Sidebar(Vertical):
     DEFAULT_CSS = """
     Sidebar {
         width: 35;
-        height: 100%;
+        height: 1fr;
         dock: left;
         border-right: solid $primary;
     }

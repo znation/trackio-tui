@@ -15,16 +15,13 @@ class Header(Horizontal):
         height: 3;
         dock: top;
         background: $primary;
-        padding: 0 1;
-    }
-
-    Header Label {
-        width: 1fr;
-        content-align: center middle;
-        text-style: bold;
+        padding: 0 1 0 36;
+        layout: horizontal;
     }
 
     Header Button {
+        width: auto;
+        min-width: 15;
         margin: 0 1;
     }
     """
@@ -36,11 +33,10 @@ class Header(Horizontal):
     def compose(self) -> ComposeResult:
         """Compose the header."""
         yield Button("Metrics", id="nav-metrics", variant="primary")
-        yield Button("System", id="nav-system", variant="default")
+        yield Button("System Metrics", id="nav-system", variant="default")
+        yield Button("Media & Tables", id="nav-media", variant="default")
         yield Button("Runs", id="nav-runs", variant="default")
-        yield Button("Media", id="nav-media", variant="default")
         yield Button("Files", id="nav-files", variant="default")
-        yield Label(self._title)
 
     def set_active_screen(self, screen_name: str):
         """Highlight the active screen button."""
@@ -59,5 +55,4 @@ class Header(Horizontal):
     def update_title(self, title: str):
         """Update the title text."""
         self._title = title
-        label = self.query_one(Label)
-        label.update(title)
+        # Label removed, title no longer displayed
