@@ -113,15 +113,12 @@ class MetricPlot(Vertical):
         # Configure axes
         x_label = self._get_x_label()
         plt.xlabel(x_label)
-        plt.ylabel(self.metric_name)
 
         # Apply log scales if configured
         if self._config.log_scale_x:
             plt.xscale("log")
         if self._config.log_scale_y:
             plt.yscale("log")
-
-        plt.title(self.metric_name)
 
         # Refresh the plot widget
         self.query_one(PlotextPlot).refresh()
