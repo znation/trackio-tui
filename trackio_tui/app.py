@@ -6,6 +6,7 @@ from textual.widgets import Button
 from textual import on
 
 from .screens.metrics import MetricsScreen
+from .screens.system_metrics import SystemMetricsScreen
 from .data.loader import TrackioDataLoader
 from .data.state import AppState
 
@@ -41,6 +42,12 @@ class TrackioTUI(App):
             name="metrics"
         )
 
+        # Install system metrics screen
+        self.install_screen(
+            SystemMetricsScreen(self._loader, self._state),
+            name="system_metrics"
+        )
+
         # Switch to metrics screen
         self.push_screen("metrics")
 
@@ -52,7 +59,7 @@ class TrackioTUI(App):
     @on(Button.Pressed, "#nav-system")
     def action_show_system(self) -> None:
         """Switch to system metrics screen."""
-        self.notify("System metrics view coming soon!", severity="information")
+        self.push_screen("system_metrics")
 
     @on(Button.Pressed, "#nav-runs")
     def action_show_runs(self) -> None:
