@@ -131,19 +131,35 @@ class MetricPlot(Vertical):
         if not data_points:
             return [], []
 
-        y_values = [float(p.get("value", 0)) for p in data_points]
+        # Filter data points to only include numeric values
+        filtered_points = []
+        for p in data_points:
+            value = p.get("value", 0)
+            # Skip non-numeric values (like tables, images, etc.)
+            if isinstance(value, dict):
+                continue
+            try:
+                float(value)
+                filtered_points.append(p)
+            except (TypeError, ValueError):
+                continue
+
+        if not filtered_points:
+            return [], []
+
+        y_values = [float(p.get("value", 0)) for p in filtered_points]
 
         if self._config.x_axis == "step":
-            x_values = [float(p.get("step", 0)) for p in data_points]
+            x_values = [float(p.get("step", 0)) for p in filtered_points]
         elif self._config.x_axis == "relative":
             # Relative time from first point
-            first_ts = data_points[0].get("timestamp", 0)
+            first_ts = filtered_points[0].get("timestamp", 0)
             x_values = [
                 float(p.get("timestamp", 0) - first_ts)
-                for p in data_points
+                for p in filtered_points
             ]
         else:  # wall time
-            x_values = [float(p.get("timestamp", 0)) for p in data_points]
+            x_values = [float(p.get("timestamp", 0)) for p in filtered_points]
 
         return x_values, y_values
 
