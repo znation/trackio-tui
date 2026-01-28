@@ -15,7 +15,7 @@ from ..widgets.control_panel import ChartConfigChanged
 from ..widgets.metric_plot import MetricPlot
 from ..widgets.header import Header
 from ..data.loader import TrackioDataLoader
-from ..data.state import AppState
+from ..data.state import AppState, ChartConfig
 
 
 class SystemMetricsScreen(Screen):
@@ -251,8 +251,16 @@ class SystemMetricsScreen(Screen):
                     self._metric_plots[metric_name] = plot
                     metrics_scroll.mount(plot)
 
+                    # Use time-based x-axis for system metrics
+                    system_config = ChartConfig(
+                        x_axis="relative",
+                        smoothing=self._state.chart_config.smoothing,
+                        log_scale_x=self._state.chart_config.log_scale_x,
+                        log_scale_y=self._state.chart_config.log_scale_y
+                    )
+
                     # Set data
-                    plot.set_data(run_data, colors, self._state.chart_config)
+                    plot.set_data(run_data, colors, system_config)
 
     def _group_system_metrics(self, metric_keys: set) -> Dict[str, List[str]]:
         """Group system metrics by category."""
@@ -282,8 +290,15 @@ class SystemMetricsScreen(Screen):
 
     def _update_plots_config(self) -> None:
         """Update configuration for all plots."""
+        # Use time-based x-axis for system metrics
+        system_config = ChartConfig(
+            x_axis="relative",
+            smoothing=self._state.chart_config.smoothing,
+            log_scale_x=self._state.chart_config.log_scale_x,
+            log_scale_y=self._state.chart_config.log_scale_y
+        )
         for plot in self._metric_plots.values():
-            plot.update_config(self._state.chart_config)
+            plot.update_config(system_config)
 
     def _clear_metrics(self) -> None:
         """Clear all metric plots."""
