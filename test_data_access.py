@@ -1,7 +1,7 @@
 """Test that the data loader can access the test data."""
 
 import asyncio
-from trackio_tui.data.loader import TrackioDataLoader
+from trackio_vibetui.data.loader import TrackioDataLoader
 
 async def test_data_access():
     """Test data loading from the sample project."""

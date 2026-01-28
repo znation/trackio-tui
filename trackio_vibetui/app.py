@@ -1,4 +1,4 @@
-"""Main Trackio TUI application."""
+"""Main Trackio VibeTUI application."""
 
 from textual.app import App, ComposeResult
 from textual.binding import Binding
@@ -31,7 +31,7 @@ class TrackioTUI(App):
         super().__init__()
         self._loader = TrackioDataLoader()
         self._state = AppState()
-        self.title = "Trackio TUI"
+        self.title = "Trackio VibeTUI"
         self.sub_title = "ML Experiment Tracking"
 
     def on_mount(self) -> None:
@@ -84,7 +84,7 @@ class TrackioTUI(App):
     def action_help(self) -> None:
         """Show help information."""
         help_text = """
-[b]Trackio TUI - Keyboard Shortcuts[/b]
+[b]Trackio VibeTUI - Keyboard Shortcuts[/b]
 
 [cyan]q[/cyan] - Quit application
 [cyan]r[/cyan] - Refresh data (clear cache)

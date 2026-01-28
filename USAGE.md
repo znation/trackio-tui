@@ -1,4 +1,4 @@
-# Trackio TUI Usage Guide
+# Trackio VibeTUI Usage Guide
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ This creates a sample project with 3 experiment runs and various metrics.
 ### 3. Run the TUI
 
 ```bash
-python -m trackio_tui
+python -m trackio_vibetui
 ```
 
 ## Using the TUI

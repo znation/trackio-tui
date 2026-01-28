@@ -1,5 +1,5 @@
 [project]
-name = "trackio-tui"
+name = "trackio-vibetui"
 version = "0.1.0"
 description = "Terminal User Interface for Trackio ML experiment tracking"
 readme = "README.md"
@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.scripts]
-trackio-tui = "trackio_tui.__main__:main"
+trackio-vibetui = "trackio_vibetui.__main__:main"
 
 [project.optional-dependencies]
 dev = [

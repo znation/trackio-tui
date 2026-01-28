@@ -1,4 +1,4 @@
-"""Configuration constants for Trackio TUI."""
+"""Configuration constants for Trackio VibeTUI."""
 
 import os
 from pathlib import Path

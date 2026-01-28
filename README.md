@@ -1,8 +1,8 @@
-# Trackio TUI
+# Trackio VibeTUI
 
 Terminal User Interface for Trackio ML experiment tracking. View your training metrics, system statistics, and experiment runs directly in your terminal.
 
-![Trackio TUI Screenshot](screenshot.png)
+![Trackio VibeTUI Screenshot](screenshot.png)
 
 ## Features
 
@@ -30,13 +30,13 @@ pip install -e ".[dev]"
 Launch the TUI:
 
 ```bash
-trackio-tui
+trackio-vibetui
 ```
 
 Or run as a Python module:
 
 ```bash
-python -m trackio_tui
+python -m trackio_vibetui
 ```
 
 ## Keyboard Shortcuts

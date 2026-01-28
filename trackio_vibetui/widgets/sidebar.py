@@ -71,7 +71,7 @@ class Sidebar(Vertical):
 
     def compose(self) -> ComposeResult:
         """Compose the sidebar."""
-        yield Label("[b]Trackio TUI[/b]")
+        yield Label("[b]Trackio VibeTUI[/b]")
 
         with VerticalScroll():
             # Project selector

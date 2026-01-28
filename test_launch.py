@@ -3,13 +3,13 @@
 import sys
 import os
 
-# Add trackio_tui to path
+# Add trackio_vibetui to path
 sys.path.insert(0, os.path.dirname(__file__))
 
 try:
-    from trackio_tui.app import TrackioTUI
-    from trackio_tui.data.loader import TrackioDataLoader
-    from trackio_tui.data.state import AppState
+    from trackio_vibetui.app import TrackioTUI
+    from trackio_vibetui.data.loader import TrackioDataLoader
+    from trackio_vibetui.data.state import AppState
 
     print("✓ Imports successful")
 
@@ -26,7 +26,7 @@ try:
     print("✓ App initialized")
 
     print("\nAll basic checks passed! The TUI structure is working.")
-    print("\nTo run the TUI, use: python -m trackio_tui")
+    print("\nTo run the TUI, use: python -m trackio_vibetui")
     print("Note: You'll need trackio data in ~/.trackio/ to see metrics.")
 
 except Exception as e:

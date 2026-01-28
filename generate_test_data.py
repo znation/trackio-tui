@@ -59,7 +59,7 @@ def create_sample_project():
 
     print(f"\n✓ Sample project '{project}' created successfully!")
     print(f"  Location: ~/.trackio/{project}.db")
-    print(f"\nYou can now run the TUI: python -m trackio_tui")
+    print(f"\nYou can now run the TUI: python -m trackio_vibetui")
 
 if __name__ == "__main__":
     print("Generating sample trackio data...")

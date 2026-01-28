@@ -26,7 +26,7 @@ class Header(Horizontal):
     }
     """
 
-    def __init__(self, title: str = "Trackio TUI", **kwargs):
+    def __init__(self, title: str = "Trackio VibeTUI", **kwargs):
         super().__init__(**kwargs)
         self._title = title
 

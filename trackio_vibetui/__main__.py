@@ -1,4 +1,4 @@
-"""Entry point for Trackio TUI when run as a module."""
+"""Entry point for Trackio VibeTUI when run as a module."""
 
 from .app import main
 
