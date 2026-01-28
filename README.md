@@ -2,7 +2,7 @@
 
 > **⚠️ Notice:** This project is vibe-coded and not thoroughly tested or even fully implemented. Users may be interested in or prefer to use either [trackio-view](https://github.com/mcgrof/trackio-view) (Python) or [trackio-tui](https://github.com/francescorubbo/trackio-tui) (Rust).
 
-Terminal User Interface for Trackio ML experiment tracking. View your training metrics, system statistics, and experiment runs directly in your terminal.
+Terminal User Interface for [Trackio](https://github.com/gradio-app/trackio) ML experiment tracking. View your training metrics, system statistics, and experiment runs directly in your terminal.
 
 ![Trackio VibeTUI Screenshot](screenshot.png)
 
