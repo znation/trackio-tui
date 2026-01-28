@@ -55,11 +55,6 @@ class MetricPlot(Vertical):
         yield Label(f"[b]{self.metric_name}[/b]")
         yield PlotextPlot()
 
-    def on_mount(self) -> None:
-        """Update plot when widget is mounted."""
-        if self._data:
-            self._update_plot()
-
     def set_data(
         self,
         run_data: Dict[str, List[Dict[str, Any]]],
@@ -78,9 +73,8 @@ class MetricPlot(Vertical):
         self._data = run_data
         self._colors = colors
         self._config = config
-        # Only update if already mounted, otherwise on_mount will handle it
-        if self.is_mounted:
-            self._update_plot()
+        # Schedule update after widget is fully ready
+        self.call_after_refresh(self._update_plot)
 
     def _update_plot(self):
         """Update the plot with current data and configuration."""
