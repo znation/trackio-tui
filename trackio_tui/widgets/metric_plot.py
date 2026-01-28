@@ -182,7 +182,7 @@ class MetricPlot(Vertical):
         if self._config.x_axis == "step":
             return "Step"
         elif self._config.x_axis == "relative":
-            return "Time"
+            return "Time (s)"
         else:
             return "Wall Time"
 
