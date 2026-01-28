@@ -2,6 +2,7 @@
 
 from typing import Dict, List, Any
 import math
+from datetime import datetime
 
 from textual.app import ComposeResult
 from textual.widgets import Static, Label
@@ -123,6 +124,19 @@ class MetricPlot(Vertical):
         # Refresh the plot widget
         self.query_one(PlotextPlot).refresh()
 
+    def _parse_timestamp(self, timestamp) -> float:
+        """Parse timestamp to float (seconds since epoch)."""
+        if isinstance(timestamp, (int, float)):
+            return float(timestamp)
+        elif isinstance(timestamp, str):
+            # Parse ISO 8601 timestamp
+            try:
+                dt = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                return dt.timestamp()
+            except (ValueError, AttributeError):
+                return 0.0
+        return 0.0
+
     def _extract_values(
         self,
         data_points: List[Dict[str, Any]]
@@ -153,13 +167,13 @@ class MetricPlot(Vertical):
             x_values = [float(p.get("step", 0)) for p in filtered_points]
         elif self._config.x_axis == "relative":
             # Relative time from first point
-            first_ts = filtered_points[0].get("timestamp", 0)
+            first_ts = self._parse_timestamp(filtered_points[0].get("timestamp", 0))
             x_values = [
-                float(p.get("timestamp", 0) - first_ts)
+                self._parse_timestamp(p.get("timestamp", 0)) - first_ts
                 for p in filtered_points
             ]
         else:  # wall time
-            x_values = [float(p.get("timestamp", 0)) for p in filtered_points]
+            x_values = [self._parse_timestamp(p.get("timestamp", 0)) for p in filtered_points]
 
         return x_values, y_values
 
