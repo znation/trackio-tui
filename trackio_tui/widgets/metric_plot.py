@@ -77,7 +77,15 @@ class MetricPlot(Vertical):
 
     def _update_plot(self):
         """Update the plot with current data and configuration."""
-        plt = self.query_one(PlotextPlot).plt
+        # Check if widget is mounted and has PlotextPlot child
+        if not self.is_mounted:
+            return
+
+        try:
+            plt = self.query_one(PlotextPlot).plt
+        except Exception:
+            # Widget may have been removed from DOM
+            return
 
         # Clear previous plot
         plt.clear_data()
